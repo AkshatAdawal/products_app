@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+<h1>Listing Products</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>SKU ID</th>
+      <th>Price</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to product.name, edit_product_path(product) %></td>
+        <td><%= link_to product.sku_id, product%></td>
+        <td><%= link_to product.price, product%></td>
+        <% unless product.images.blank? %>
+          <% img_url = nil %>
+          <% product.images.each do |img| %>
+            <% img_url = img.img_path %>
+            <% break if img_url.present? %>
+          <% end %>
+          <% if remote_img_exists?(product.images.first.img_path) %>
+            <td><%= image_tag(img_url, size: '100x100') %></td>
+          <% else %>
+            <td><%= image_tag('no_pic.jpg', size: '100x100') %></td>
+          <% end %>
+        <% else %>
+          <td><%= image_tag('no_pic.jpg', size: '100x100') %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'New Product', new_product_path %>

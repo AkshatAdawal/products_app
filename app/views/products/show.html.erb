@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <p style="font-size: 18px">Product Name: <%= @product.name %></p>
+</p>
+<p>
+  <p style="font-size: 18px">Expiry Date: <%= @product.expiry_date.strftime('%-d %B, %Y') %></p>
+</p>
+<p>
+  <p style="font-size: 18px">SKU id: <%= @product.sku_id %></p>
+</p>
+<p>
+  <p style="font-size: 18px">Price: <%= @product.price %></p>
+</p>
+<p>
+  <p style="font-size: 18px">Tags: <%= @product.tags_seq %></p>
+</p>
+<p>
+  <p style="font-size: 18px">Categories: <%= @product.categories_seq %></p>
+</p>
+<% unless @product.images.nil? %>
+  <% @product.images.each do |p| %>
+    <% if remote_img_exists?(p.img_path) %>
+      <%= image_tag p.img_path, :style => "width: 300px; height: 250px;"  %>
+    <% else %>
+      <%= image_tag('no_pic.jpg', size: '300x250') %>
+    <% end %>
+  <% end %>
+<% end %>
+<br/>
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

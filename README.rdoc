@@ -1,0 +1,18 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+* Ruby version : 2.1.5
+
+* Rails version: 4.2.5
+
+This project is about creating and viewing product listings. Creation of products can be done via API using POST  request to host/api/v1/products.json. It is assumed that for update the rquests would be at the end point
+host/api/v1/products/:id.json. Whenever a new image is provided via image parameters in create and update actions their path is saved and an association is made between products and images. Same goes for category and tags.
+
+Regarding view at host/admin/products all the products created so far can be viewed with name, price, sku_id and first image. First available image is shown here  instead of **first** image(although repeated remote requests severely affect page loading time, this could be made async but could not be achieved due to lack of time). If there are no images then a generic image signifying no_pic is shown. Clicking on name leads to edit page. Here tags and categories are to be entered separated by comma. Images are not made editable as it was not specified in requirements but that can be easily achieved by providing comma separated urls for images in a text field.
+
+A utility function **remote_img_exists?** for checking availability of image in remote url is defined in application helper. An initializer to use Ruby's **Resolv** DNS resolution library is also used in config/initialzers folder as
+00_fix_dns.rb.
+
+Feel free to leave comments.

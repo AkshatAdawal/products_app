@@ -1,0 +1,38 @@
+<%= form_for(@product, :html => {:multipart => true}) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :Expiry_Date %><br>
+    <%= f.date_field :expiry_date %>
+  </div>
+  <div class="field">
+    <%= f.label :SKU_Id %><br>
+    <%= f.text_field :sku_id %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price, :class => 'text_field', :step => 'any' %>
+  </div>
+  <div class="field">
+    <%= f.label :tag_list, "Tags" %>
+    <%= f.text_field :tag_list, value: @product.tags_seq %>
+  </div>
+  <div class="field">
+    <%= f.label :categories_list, "Categories" %>
+    <%= f.text_field :categories_list, value: @product.categories_seq %>
+  </div>
+  <% unless @images.nil? %>
+    <% @images.each do |p| %>
+      <% if remote_img_exists?(p.img_path) %>
+        <%= image_tag p.img_path, :style => "width: 300px; height: 250px;"  %>
+      <% else %>
+        <%= image_tag('no_pic.jpg', size: '300x250') %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
