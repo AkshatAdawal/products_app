@@ -1,4 +1,5 @@
 module ApplicationHelper
+  #To get exitence of remote image
   def remote_img_exists?(url)
     url = URI.parse(url)
     begin

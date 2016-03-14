@@ -16,11 +16,11 @@
     <%= f.number_field :price, :class => 'text_field', :step => 'any' %>
   </div>
   <div class="field">
-    <%= f.label :tag_list, "Tags" %>
+    <%= f.label :tag_list, "Tags(Enter (,) separated values here)" %>
     <%= f.text_field :tag_list, value: @product.tags_seq %>
   </div>
   <div class="field">
-    <%= f.label :categories_list, "Categories" %>
+    <%= f.label :categories_list, "Categories(Enter (,) separated values here)" %>
     <%= f.text_field :categories_list, value: @product.categories_seq %>
   </div>
   <% unless @images.nil? %>
