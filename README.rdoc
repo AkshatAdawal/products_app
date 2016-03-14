@@ -13,7 +13,7 @@ application up and running.
 
 * MySQL password: "" (blank)
 
-*Please configure config/database.yml with your usernam and password before running the project*
+**Please configure config/database.yml with your usernam and password before running the project**
 
 This project is about creating and viewing product listings. Creation of products can be done via API using POST  request to host/api/v1/products.json. It is assumed that for update the rquests would be at the end point
 host/api/v1/products/:id.json. Whenever a new image is provided via image parameters in create and update actions their path is saved and an association is made between products and images. Same goes for category and tags.
